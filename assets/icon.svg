@@ -1,1 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="18" fill="#193230"/><text x="14" y="43" font-family="Arial,sans-serif" font-weight="bold" font-size="39" fill="#eff9df">u</text><circle cx="48" cy="44" r="5" fill="#ceee9c"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Utkarsh Anand — UA</title>
+  <circle cx="32" cy="32" r="32" fill="#193230"/>
+  <text
+	x="9"
+	y="42"
+	font-family="Arial, Helvetica, sans-serif"
+	font-size="27"
+	font-weight="800"
+	letter-spacing="-2"
+	fill="#FFFDF2">UA</text>
+  <circle cx="53" cy="44" r="4" fill="#F3B77B"/>
+</svg>
