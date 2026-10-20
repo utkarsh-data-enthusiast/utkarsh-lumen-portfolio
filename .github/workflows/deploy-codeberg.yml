@@ -23,6 +23,7 @@ jobs:
       - name: Check out website source
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Build website
@@ -56,7 +57,7 @@ jobs:
 
           CODEBERG_REPO="https://codeberg.org/utkarsh-data-enthusiast/utkarsh-lumen-portfolio.git"
 
-          # Authenticate without putting the token in Git URLs.
+          # Authenticate securely without putting the token in Git URLs.
           ASKPASS_FILE="$(mktemp)"
 
           cleanup() {
@@ -85,12 +86,12 @@ jobs:
           export GIT_ASKPASS="$ASKPASS_FILE"
           export GIT_TERMINAL_PROMPT=0
 
-          # Synchronize Codeberg's source branch.
+          # Synchronize Codeberg's main branch with GitHub.
           git push \
             "$CODEBERG_REPO" \
             HEAD:refs/heads/main
 
-          # Obtain the current published branch.
+          # Download the currently published Codeberg Pages branch.
           git clone \
             --depth 1 \
             --single-branch \
@@ -116,7 +117,7 @@ jobs:
 
           git -C .deploy-pages add -A
 
-          # Publish only when the website has changed.
+          # Publish only if the generated website has changed.
           if git -C .deploy-pages diff --cached --quiet; then
             echo "Codeberg Pages is already up to date."
           else
