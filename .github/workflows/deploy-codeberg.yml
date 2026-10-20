@@ -3,8 +3,8 @@ name: Deploy Lumen Portfolio to Codeberg
 
 on:
   push:
-	branches:
-	  - main
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -16,115 +16,115 @@ concurrency:
 
 jobs:
   deploy:
-	name: Build and deploy Lumen Portfolio
-	runs-on: ubuntu-latest
+    name: Build and deploy Lumen Portfolio
+    runs-on: ubuntu-latest
 
-	steps:
-	  - name: Check out website source
-		uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
-		with:
-		  persist-credentials: false
+    steps:
+      - name: Check out website source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
-	  - name: Build website
-		shell: bash
-		run: |
-		  set -euo pipefail
+      - name: Build website
+        shell: bash
+        run: |
+          set -euo pipefail
 
-		  python3 build.py
+          python3 build.py
 
-		  test -f dist/index.html
-		  test -f dist/404.html
-		  test -f dist/privacy.html
-		  test -f dist/projects/index.html
-		  test -f dist/assets/style.css
-		  test -f dist/assets/app.js
-		  test -f dist/assets/icon.svg
+          test -f dist/index.html
+          test -f dist/404.html
+          test -f dist/privacy.html
+          test -f dist/projects/index.html
+          test -f dist/assets/style.css
+          test -f dist/assets/app.js
+          test -f dist/assets/icon.svg
 
-		  echo "Website build successful."
+          echo "Website build successful."
 
-	  - name: Synchronize and publish to Codeberg
-		shell: bash
-		env:
-		  CODEBERG_DEPLOY_TOKEN: ${{ secrets.CODEBERG_DEPLOY_TOKEN }}
-		run: |
-		  set -euo pipefail
+      - name: Synchronize and publish to Codeberg
+        shell: bash
+        env:
+          CODEBERG_DEPLOY_TOKEN: ${{ secrets.CODEBERG_DEPLOY_TOKEN }}
+        run: |
+          set -euo pipefail
 
-		  if [[ -z "${CODEBERG_DEPLOY_TOKEN}" ]]; then
-			echo "Missing Codeberg deployment credential."
-			exit 1
-		  fi
+          if [[ -z "${CODEBERG_DEPLOY_TOKEN}" ]]; then
+            echo "Missing Codeberg deployment credential."
+            exit 1
+          fi
 
-		  CODEBERG_REPO="https://codeberg.org/utkarsh-data-enthusiast/utkarsh-lumen-portfolio.git"
+          CODEBERG_REPO="https://codeberg.org/utkarsh-data-enthusiast/utkarsh-lumen-portfolio.git"
 
-		  # Authenticate without putting the token in Git URLs.
-		  ASKPASS_FILE="$(mktemp)"
+          # Authenticate without putting the token in Git URLs.
+          ASKPASS_FILE="$(mktemp)"
 
-		  cleanup() {
-			rm -f "$ASKPASS_FILE"
-		  }
+          cleanup() {
+            rm -f "$ASKPASS_FILE"
+          }
 
-		  trap cleanup EXIT
+          trap cleanup EXIT
 
-		  cat > "$ASKPASS_FILE" <<'SCRIPT'
-		  #!/usr/bin/env bash
-		  case "$1" in
-			*Username*)
-			  printf '%s\n' "utkarsh-data-enthusiast"
-			  ;;
-			*Password*)
-			  printf '%s\n' "$CODEBERG_DEPLOY_TOKEN"
-			  ;;
-			*)
-			  exit 1
-			  ;;
-		  esac
-		  SCRIPT
+          cat > "$ASKPASS_FILE" <<'SCRIPT'
+          #!/usr/bin/env bash
+          case "$1" in
+            *Username*)
+              printf '%s\n' "utkarsh-data-enthusiast"
+              ;;
+            *Password*)
+              printf '%s\n' "$CODEBERG_DEPLOY_TOKEN"
+              ;;
+            *)
+              exit 1
+              ;;
+          esac
+          SCRIPT
 
-		  chmod 700 "$ASKPASS_FILE"
+          chmod 700 "$ASKPASS_FILE"
 
-		  export GIT_ASKPASS="$ASKPASS_FILE"
-		  export GIT_TERMINAL_PROMPT=0
+          export GIT_ASKPASS="$ASKPASS_FILE"
+          export GIT_TERMINAL_PROMPT=0
 
-		  # Synchronize Codeberg's source branch.
-		  git push \
-			"$CODEBERG_REPO" \
-			HEAD:refs/heads/main
+          # Synchronize Codeberg's source branch.
+          git push \
+            "$CODEBERG_REPO" \
+            HEAD:refs/heads/main
 
-		  # Obtain the current published branch.
-		  git clone \
-			--depth 1 \
-			--single-branch \
-			--branch pages \
-			"$CODEBERG_REPO" \
-			.deploy-pages
+          # Obtain the current published branch.
+          git clone \
+            --depth 1 \
+            --single-branch \
+            --branch pages \
+            "$CODEBERG_REPO" \
+            .deploy-pages
 
-		  # Copy generated website files.
-		  # Preserve Git metadata and repository documentation.
-		  rsync -a --delete \
-			--exclude='.git/' \
-			--exclude='.domains' \
-			--exclude='README.md' \
-			--exclude='LICENSE' \
-			--exclude='SECURITY.md' \
-			dist/ .deploy-pages/
+          # Copy generated website files.
+          # Preserve Git metadata and repository documentation.
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.domains' \
+            --exclude='README.md' \
+            --exclude='LICENSE' \
+            --exclude='SECURITY.md' \
+            dist/ .deploy-pages/
 
-		  git -C .deploy-pages config \
-			user.name "Lumen Deployment Bot"
+          git -C .deploy-pages config \
+            user.name "Lumen Deployment Bot"
 
-		  git -C .deploy-pages config \
-			user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C .deploy-pages config \
+            user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-		  git -C .deploy-pages add -A
+          git -C .deploy-pages add -A
 
-		  # Publish only when the website has changed.
-		  if git -C .deploy-pages diff --cached --quiet; then
-			echo "Codeberg Pages is already up to date."
-		  else
-			git -C .deploy-pages commit \
-			  -m "Deploy Lumen Portfolio from GitHub Actions"
+          # Publish only when the website has changed.
+          if git -C .deploy-pages diff --cached --quiet; then
+            echo "Codeberg Pages is already up to date."
+          else
+            git -C .deploy-pages commit \
+              -m "Deploy Lumen Portfolio from GitHub Actions"
 
-			git -C .deploy-pages push \
-			  origin HEAD:refs/heads/pages
+            git -C .deploy-pages push \
+              origin HEAD:refs/heads/pages
 
-			echo "Website files pushed to Codeberg Pages."
-		  fi
+            echo "Website files pushed to Codeberg Pages."
+          fi
