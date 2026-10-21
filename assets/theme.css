@@ -1,0 +1,293 @@
+
+/*
+ * Lumen Portfolio — Light / Dark theme
+ * Light is the default.
+ * Local CSS only: no external services.
+ * Loaded after style.css.
+ */
+
+/* Theme-switching button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 10px 15px;
+  border: 1px solid var(--stroke);
+  border-radius: 100px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+  transition:
+	background .2s ease,
+	color .2s ease,
+	border-color .2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--mint);
+  border-color: var(--green);
+}
+
+.theme-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.theme-label {
+  line-height: 1;
+}
+
+/* Dark palette */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #101819;
+  --white: #182524;
+  --ink: #edf5ef;
+  --soft: #c0d2c9;
+  --muted: #adc4b8;
+  --stroke: #354b45;
+
+  --green: #9bd8b8;
+  --deep: #12342c;
+
+  --lime: #294438;
+  --mint: #20362f;
+  --mint-strong: #294d3d;
+
+  --tangerine: #efa977;
+  --tangerine-soft: #513c30;
+
+  --sky: #293f4e;
+  --peach: #4b372d;
+  --lilac: #393348;
+  --yellow: #4d442c;
+
+  --shadow: 0 24px 70px rgba(0, 0, 0, .35);
+}
+
+/* Dark header and navigation */
+[data-theme="dark"] .site-header {
+  background: rgba(16, 24, 25, .96);
+  border-bottom-color: var(--stroke);
+}
+
+[data-theme="dark"] .brand-icon {
+  background: #dff0e5;
+  color: #172923;
+}
+
+[data-theme="dark"] .brand-dot {
+  color: #b75a32;
+}
+
+[data-theme="dark"] .hamburger {
+  background: var(--white);
+  color: var(--ink);
+}
+
+[data-theme="dark"] .nav-cta:hover {
+  background: var(--mint-strong);
+  color: var(--ink);
+}
+
+/* Dark hero */
+[data-theme="dark"] .hero {
+  background:
+	radial-gradient(
+	  circle at 75% 30%,
+	  rgba(52, 107, 82, .18),
+	  transparent 44%
+	),
+	var(--paper);
+}
+
+[data-theme="dark"] .atlas-card {
+  background: var(--white);
+  border-color: var(--stroke);
+}
+
+[data-theme="dark"] .atlas-controls {
+  background: #20342e;
+}
+
+[data-theme="dark"] .atlas-tab[aria-pressed="true"] {
+  background: #385548;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .atlas-tag {
+  background: #654633;
+  color: #fff0df;
+}
+
+[data-theme="dark"] .side-note {
+  border-color: #75643a;
+}
+
+/* Buttons */
+[data-theme="dark"] .btn-primary {
+  color: #1a2520;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: #ffc197;
+  border-color: #ffc197;
+  color: #17221d;
+}
+
+[data-theme="dark"] .btn-light {
+  background: var(--white);
+  color: var(--ink);
+  border-color: var(--stroke);
+}
+
+[data-theme="dark"] .skip {
+  background: #d7f1e0;
+  color: #172923;
+}
+
+/* Sections and project cards */
+[data-theme="dark"] .white-section {
+  background: #152120;
+}
+
+[data-theme="dark"] .feature-card {
+  background: #192625;
+}
+
+[data-theme="dark"] .feature-visual.theme-green {
+  background: #294739;
+}
+
+[data-theme="dark"] .feature-visual.theme-sky {
+  background: #294251;
+}
+
+[data-theme="dark"] .feature-visual.theme-orange {
+  background: #4b382e;
+}
+
+[data-theme="dark"] .feature-visual.theme-purple {
+  background: #3b354e;
+}
+
+[data-theme="dark"] .feature-visual.theme-yellow {
+  background: #49432c;
+}
+
+[data-theme="dark"] .feature-visual::after {
+  border-color: var(--stroke);
+}
+
+[data-theme="dark"] .tag {
+  background: rgba(255, 255, 255, .05);
+  color: var(--soft);
+}
+
+/* Interactive skills */
+[data-theme="dark"] .skills-display {
+  background: var(--mint);
+  border-color: var(--stroke);
+}
+
+[data-theme="dark"] .skill-chip {
+  background: #273e35;
+  color: var(--ink);
+  border-color: #517766;
+}
+
+/* Project filtering and search */
+[data-theme="dark"] .library-tools {
+  background: var(--white);
+}
+
+[data-theme="dark"] .filter-btn,
+[data-theme="dark"] .search {
+  background: #263631;
+  color: var(--soft);
+}
+
+[data-theme="dark"] .filter-btn[aria-pressed="true"] {
+  background: var(--green);
+  border-color: var(--green);
+  color: #11241b;
+}
+
+[data-theme="dark"] .search input {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .search input::placeholder {
+  color: var(--muted);
+}
+
+/* Contact section */
+[data-theme="dark"] .connect {
+  background: linear-gradient(
+	120deg,
+	#182a25 0%,
+	#203c30 56%,
+	#17251f 100%
+  );
+}
+
+[data-theme="dark"] .connect::before {
+  border-color: rgba(145, 197, 160, .24);
+  box-shadow:
+	0 0 0 65px rgba(255, 255, 255, .025),
+	0 0 0 135px rgba(255, 255, 255, .015);
+}
+
+[data-theme="dark"] .social-row {
+  border-bottom-color: var(--stroke);
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+  background: #142a24;
+  border-top-color: var(--stroke);
+  color: var(--soft);
+}
+
+/* Additional refinements */
+[data-theme="dark"] .source-note {
+  background: var(--mint);
+}
+
+[data-theme="dark"] .case-baseline {
+  border-color: var(--stroke);
+}
+
+[data-theme="dark"] a:focus-visible,
+[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] input:focus-visible {
+  outline-color: #ffc197;
+}
+
+/* Responsive theme button */
+@media (max-width: 1120px) {
+  .theme-toggle {
+	padding: 10px 12px;
+  }
+
+  .theme-label {
+	display: none;
+  }
+}
+
+@media (max-width: 740px) {
+  .theme-toggle {
+	margin-left: auto;
+	min-width: 42px;
+  }
+}
