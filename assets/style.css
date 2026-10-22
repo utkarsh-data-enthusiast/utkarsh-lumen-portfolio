@@ -1,3 +1,4 @@
+
 /* Lumen Portfolio — premium mint and tangerine light theme. */
 /* Local assets only. No tracking or external dependencies. */
 
@@ -217,12 +218,12 @@ input:focus-visible {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(
-      circle at 75% 30%,
-      rgba(199, 233, 214, .47),
-      transparent 44%
-    ),
-    var(--paper);
+	radial-gradient(
+	  circle at 75% 30%,
+	  rgba(199, 233, 214, .47),
+	  transparent 44%
+	),
+	var(--paper);
 }
 
 .hero-grid {
@@ -472,6 +473,8 @@ input:focus-visible {
   transform: rotate(-7deg);
 }
 
+/* Eureka! — refined typography for circular accent */
+
 .side-note {
   position: absolute;
   right: -36px;
@@ -483,7 +486,7 @@ input:focus-visible {
   display: grid;
   place-items: center;
   background: var(--yellow);
-  font: italic 29px Georgia, serif;
+  font: italic 18px Georgia, serif;
   transform: rotate(12deg);
   border: 1px solid #e1c973;
 }
@@ -897,10 +900,10 @@ input:focus-visible {
 
 .connect {
   background: linear-gradient(
-    120deg,
-    #e4f4e9 0%,
-    #d7efe4 56%,
-    #f5f9ec 100%
+	120deg,
+	#e4f4e9 0%,
+	#d7efe4 56%,
+	#f5f9ec 100%
   );
   color: var(--ink);
   overflow: hidden;
@@ -917,8 +920,8 @@ input:focus-visible {
   border: 1px solid #629e8370;
   border-radius: 50%;
   box-shadow:
-    0 0 0 65px #ffffff35,
-    0 0 0 135px #ffffff20;
+	0 0 0 65px #ffffff35,
+	0 0 0 135px #ffffff20;
   pointer-events: none;
 }
 
@@ -1291,14 +1294,14 @@ input:focus-visible {
 
 @media (prefers-reduced-motion: no-preference) {
   .reveal-ready .reveal {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: opacity .65s, transform .65s;
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity .65s, transform .65s;
   }
 
   .reveal-ready .reveal.show {
-    opacity: 1;
-    transform: translateY(0);
+	opacity: 1;
+	transform: translateY(0);
   }
 }
 
@@ -1331,38 +1334,38 @@ input:focus-visible {
   .hamburger { display: block; }
 
   .nav-menu {
-    display: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 72px;
-    background: var(--paper);
-    padding: 21px 23px 28px;
-    border-bottom: 1px solid var(--stroke);
-    box-shadow: 0 18px 25px #234c3511;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
+	display: none;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 72px;
+	background: var(--paper);
+	padding: 21px 23px 28px;
+	border-bottom: 1px solid var(--stroke);
+	box-shadow: 0 18px 25px #234c3511;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0;
   }
 
   .nav-menu.is-open { display: flex; }
 
   .nav-menu a {
-    padding: 15px 4px;
-    border-bottom: 1px solid var(--stroke);
+	padding: 15px 4px;
+	border-bottom: 1px solid var(--stroke);
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
-    padding-top: 70px;
-    padding-bottom: 74px;
-    min-height: unset;
-    gap: 57px;
+	grid-template-columns: 1fr;
+	padding-top: 70px;
+	padding-bottom: 74px;
+	min-height: unset;
+	gap: 57px;
   }
 
   .hero-headline {
-    font-size: clamp(66px, 12vw, 92px);
-    margin: 24px 0 20px;
+	font-size: clamp(66px, 12vw, 92px);
+	margin: 24px 0 20px;
   }
 
   .hero-copy { font-size: 15px; }
@@ -1370,34 +1373,35 @@ input:focus-visible {
   .hero-footnote { margin-top: 29px; }
 
   .hero-art {
-    max-width: 520px;
-    margin: auto;
-    width: calc(100% - 8px);
+	max-width: 520px;
+	margin: auto;
+	width: calc(100% - 8px);
   }
 
   .art-halo { right: -30px; }
 
+  /* Eureka! — mobile circular accent */
   .side-note {
-    right: -9px;
-    top: 63px;
-    width: 65px;
-    height: 65px;
-    font-size: 21px;
+	right: -9px;
+	top: 63px;
+	width: 65px;
+	height: 65px;
+	font-size: 13px;
   }
 
   .atlas-tag {
-    left: -11px;
-    bottom: 55px;
-    padding: 12px 14px;
-    font-size: 9px;
+	left: -11px;
+	bottom: 55px;
+	padding: 12px 14px;
+	font-size: 9px;
   }
 
   .atlas-body { padding: 25px 24px 10px; }
 
   .ticker-inner {
-    padding: 17px 23px;
-    overflow: hidden;
-    justify-content: flex-start;
+	padding: 17px 23px;
+	overflow: hidden;
+	justify-content: flex-start;
   }
 
   .ticker-inner span { font-size: 10px; }
@@ -1418,16 +1422,16 @@ input:focus-visible {
   .skills-panel { grid-template-columns: 1fr; gap: 20px; }
 
   .skills-rail {
-    border: 0;
-    padding: 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 6px;
+	border: 0;
+	padding: 0;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 6px;
   }
 
   .skill-selector {
-    font-size: 12px;
-    padding: 14px 11px;
-    border: 1px solid var(--stroke);
+	font-size: 12px;
+	padding: 14px 11px;
+	border: 1px solid var(--stroke);
   }
 
   .skill-selector span { display: none; }
@@ -1441,13 +1445,13 @@ input:focus-visible {
 
   .about-columns,
   .connect-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
+	grid-template-columns: 1fr;
+	gap: 35px;
   }
 
   .journey-item {
-    grid-template-columns: 76px 1fr;
-    gap: 13px;
+	grid-template-columns: 76px 1fr;
+	gap: 13px;
   }
 
   .connect:before { right: -250px; }
@@ -1457,9 +1461,9 @@ input:focus-visible {
   .page-hero h1 { font-size: clamp(58px, 10vw, 88px); }
 
   .project-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-    padding-bottom: 60px;
+	grid-template-columns: 1fr;
+	gap: 15px;
+	padding-bottom: 60px;
   }
 
   .project-grid .feature-card p { min-height: auto; }
@@ -1467,9 +1471,9 @@ input:focus-visible {
   .search { width: 100%; }
 
   .case-top {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 65px 0 49px;
+	grid-template-columns: 1fr;
+	gap: 32px;
+	padding: 65px 0 49px;
   }
 
   .case-top h1 { font-size: clamp(45px, 9vw, 71px); }
@@ -1477,17 +1481,17 @@ input:focus-visible {
   .case-baseline { grid-template-columns: 1fr; }
 
   .case-baseline > div {
-    padding: 17px 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--stroke);
+	padding: 17px 0;
+	border-right: 0;
+	border-bottom: 1px solid var(--stroke);
   }
 
   .case-baseline > div:last-child { border: 0; }
 
   .case-body {
-    grid-template-columns: 1fr;
-    gap: 35px;
-    padding: 55px 0;
+	grid-template-columns: 1fr;
+	gap: 35px;
+	padding: 55px 0;
   }
 
   .next-work { padding: 10px 0 60px; }
@@ -1504,9 +1508,9 @@ input:focus-visible {
   .atlas-card-header { padding: 15px 17px; }
 
   .atlas-tag {
-    left: -4px;
-    bottom: 54px;
-    font-size: 8px;
+	left: -4px;
+	bottom: 54px;
+	font-size: 8px;
   }
 
   .atlas-controls { margin: 0 12px 15px; }
@@ -1536,8 +1540,8 @@ input:focus-visible {
   *,
   *::before,
   *::after {
-    animation: none !important;
-    scroll-behavior: auto !important;
-    transition: none !important;
+	animation: none !important;
+	scroll-behavior: auto !important;
+	transition: none !important;
   }
 }
